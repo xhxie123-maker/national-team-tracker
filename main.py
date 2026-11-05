@@ -18,6 +18,19 @@ import analyze
 import render
 
 
+def _history_days():
+    """已入库的份额交易日数量，用于判断是否需要回补历史（日常运行无需重复回补）"""
+    import pandas as pd
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "share_history.csv")
+    if not os.path.exists(path):
+        return 0
+    try:
+        df = pd.read_csv(path, usecols=["date"])
+        return int(df["date"].astype(str).str[:10].nunique())
+    except Exception:
+        return 0
+
+
 def main():
     ensure_dirs()
     args = sys.argv[1:]
@@ -26,7 +39,10 @@ def main():
     log("===== national-team-tracker run =====")
 
     if not no_seed:
-        data_fetch.seed_share_history(days=240)  # 幂等：只补缺失交易日（首日回补近一年）
+        if _history_days() >= 60:
+            log(f"[seed] 份额历史已足够（{_history_days()} 个交易日），跳过回补")
+        else:
+            data_fetch.seed_share_history(days=240)  # 幂等：只补缺失交易日（首日回补近一年）
     data_fetch.append_today_share()              # 写当日份额
     data_fetch.refresh_quote_history()           # 行情+净值
     clean.clean_history()                        # 去重/类型归一（防云端重复累积）
