@@ -1,0 +1,22 @@
+{
+  "pool_name": "国家队青睐大盘宽基ETF",
+  "source_note": "依据2026-11元宝《国家队青睐的大盘ETF偏好分析》整理：中央汇金系为核心，叠加国新/诚通等稳市资金。公开口径以沪深300/上证50/上证180为主压舱石，中证A500为新晋，中证500/1000/科创50/创业板为稳市工具箱。",
+  "etfs": [
+    {"code": "510300", "name": "沪深300ETF华泰柏瑞", "market": "SH", "category": "沪深300压舱石", "index": "沪深300", "note": "规模最大流动性最好，汇金合计持仓曾超82%"},
+    {"code": "510310", "name": "沪深300ETF易方达", "market": "SH", "category": "沪深300压舱石", "index": "沪深300", "note": "汇金系重仓"},
+    {"code": "510330", "name": "沪深300ETF华夏", "market": "SH", "category": "沪深300压舱石", "index": "沪深300", "note": "汇金系重仓"},
+    {"code": "159919", "name": "沪深300ETF嘉实", "market": "SZ", "category": "沪深300压舱石", "index": "沪深300", "note": "汇金系重仓"},
+    {"code": "510050", "name": "上证50ETF华夏", "market": "SH", "category": "权重蓝筹", "index": "上证50", "note": "汇金合计持仓约86%"},
+    {"code": "510180", "name": "上证180ETF华安", "market": "SH", "category": "权重蓝筹", "index": "上证180", "note": "汇金持仓占比一度超90%"},
+    {"code": "563360", "name": "A500ETF华泰柏瑞", "market": "SH", "category": "中证A500", "index": "中证A500", "note": "新晋核心宽基"},
+    {"code": "159352", "name": "A500ETF南方", "market": "SZ", "category": "中证A500", "index": "中证A500", "note": "新晋核心宽基"},
+    {"code": "563800", "name": "A500ETF广发", "market": "SH", "category": "中证A500", "index": "中证A500", "note": "新晋核心宽基"},
+    {"code": "510500", "name": "中证500ETF南方", "market": "SH", "category": "稳市工具箱", "index": "中证500", "note": "分层维稳"},
+    {"code": "512500", "name": "中证500ETF华夏", "market": "SH", "category": "稳市工具箱", "index": "中证500", "note": "分层维稳"},
+    {"code": "512100", "name": "中证1000ETF南方", "market": "SH", "category": "稳市工具箱", "index": "中证1000", "note": "分层维稳"},
+    {"code": "159845", "name": "中证1000ETF华夏", "market": "SZ", "category": "稳市工具箱", "index": "中证1000", "note": "分层维稳"},
+    {"code": "560010", "name": "中证1000ETF广发", "market": "SH", "category": "稳市工具箱", "index": "中证1000", "note": "分层维稳"},
+    {"code": "588000", "name": "科创50ETF华夏", "market": "SH", "category": "稳市工具箱", "index": "科创50", "note": "成长端维稳"},
+    {"code": "159915", "name": "创业板ETF易方达", "market": "SZ", "category": "稳市工具箱", "index": "创业板指", "note": "成长端维稳"}
+  ]
+}
