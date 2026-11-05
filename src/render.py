@@ -218,196 +218,142 @@ tr:hover td{background:rgba(61,126,255,.06)}
 const TREND = {TREND_JSON};
 const TREND_CODES = {TREND_CODES_JSON};
 const CHG5D = {CHG5D_JSON};
-const CHG1D = {CHG1D_JSON};
 const NETFLOW = {NETFLOW_JSON};
-const VOLRATIO = {VOLRATIO_JSON};
-const PREMIUM = {PREMIUM_JSON};
-const ALERTS = {ALERTS_JSON};
-const HOLDERS = {HOLDERS_JSON};
+const THEME = {color:['#3d7eff','#ffb84d','#2ecc71','#f4504e','#a78bfa','#38bdf8','#fb923c','#4ade80','#f472b6','#eab308']};
 
-const fmt = (v, d=2) => v==null||isNaN(v) ? "-" : Number(v).toLocaleString("zh-CN",{minimumFractionDigits:d,maximumFractionDigits:d});
-const pct = (v) => v==null ? "-" : (v>0?"+":"") + v.toFixed(2) + "%";
-const cls = (v) => v==null ? "" : (v>0?"up":"down");
-const nvb = (v) => v==null ? "-" : (v>=1e8? (v/1e8).toFixed(2)+"亿" : v.toLocaleString("zh-CN"));
+// 份额趋势
+(function(){
+  const chart = echarts.init(document.getElementById('trend'));
+  const series = TREND_CODES.map((c, i) => ({
+    name: c, type:'line', data: TREND[c], smooth:true, showSymbol:false,
+    lineStyle:{width:2}, itemStyle:{color:THEME.color[i%10]}
+  }));
+  chart.setOption({
+    backgroundColor:'transparent',
+    tooltip:{trigger:'axis'},
+    legend:{textStyle:{color:'#8a97b5'}, top:0},
+    grid:{left:55,right:20,top:34,bottom:30},
+    xAxis:{type:'category',data:[],axisLabel:{color:'#8a97b5'},axisLine:{lineStyle:{color:'#24304a'}}},
+    yAxis:{type:'value',axisLabel:{color:'#8a97b5'},splitLine:{lineStyle:{color:'rgba(36,48,74,.5)'}}},
+    series: series
+  });
+  // 日期轴用份额行数对齐
+  chart.setOption({xAxis:{data:TREND.dates || []}});
+})();
 
-function setChart(id, option){ const el = document.getElementById(id); if(!el) return; const c = echarts.init(el); c.setOption(option); window.addEventListener("resize", ()=>c.resize()); }
+// 5日份额变化率
+(function(){
+  const chart = echarts.init(document.getElementById('chg5d'));
+  chart.setOption({
+    backgroundColor:'transparent',
+    tooltip:{trigger:'axis'},
+    grid:{left:90,right:30,top:10,bottom:30},
+    xAxis:{type:'value',axisLabel:{color:'#8a97b5'},splitLine:{lineStyle:{color:'rgba(36,48,74,.5)'}}},
+    yAxis:{type:'category',data:CHG5D.names,axisLabel:{color:'#8a97b5'}},
+    series:[{type:'bar',data:CHG5D.vals,itemStyle:{color:function(p){return p.value>=0?'#f4504e':'#2ecc71'}},label:{show:true,position:'right',color:'#dbe4f5',formatter:'{c}%'}}]
+  });
+})();
 
-// 1 份额趋势
-setChart("trend", {
-  backgroundColor:"transparent",
-  tooltip:{trigger:"axis"},
-  legend:{data:TREND_CODES.map(c=>c[1]), textStyle:{color:"#8a97b5"}, top:0},
-  grid:{left:50,right:20,top:32,bottom:30},
-  xAxis:{type:"category",data:TREND[0],axisLabel:{color:"#8a97b5"}},
-  yAxis:{type:"value",axisLabel:{color:"#8a97b5"},splitLine:{lineStyle:{color:"rgba(36,48,74,.5)"}}},
-  series: TREND_CODES.map((c,i)=>({name:c[1],type:"line",smooth:true,showSymbol:false,data:TREND[i+1],lineStyle:{width:2},itemStyle:{color:["#3d7eff","#f4504e","#2ecc71","#ffb84d","#a78bfa","#22d3ee"][i%6]}}))
-});
-
-// 2 5日份额变化率排行
-setChart("chg5d", {
-  backgroundColor:"transparent",
-  tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},
-  grid:{left:110,right:40,top:8,bottom:24},
-  xAxis:{type:"value",axisLabel:{color:"#8a97b5"},splitLine:{lineStyle:{color:"rgba(36,48,74,.5)"}}},
-  yAxis:{type:"category",data:CHG5D.map(d=>d[0]),axisLabel:{color:"#8a97b5"}},
-  series:[{type:"bar",data:CHG5D.map(d=>d[1]),barWidth:10,itemStyle:{color:(p)=>p.value>=0?"#f4504e":"#2ecc71",borderRadius:[0,4,4,0]}}]
-});
-
-// 3 5日净流入估算排行
-setChart("netflow", {
-  backgroundColor:"transparent",
-  tooltip:{trigger:"axis",axisPointer:{type:"shadow"},valueFormatter:v=>v.toFixed(1)+" 亿"},
-  grid:{left:110,right:40,top:8,bottom:24},
-  xAxis:{type:"value",axisLabel:{color:"#8a97b5"},splitLine:{lineStyle:{color:"rgba(36,48,74,.5)"}}},
-  yAxis:{type:"category",data:NETFLOW.map(d=>d[0]),axisLabel:{color:"#8a97b5"}},
-  series:[{type:"bar",data:NETFLOW.map(d=>d[1]),barWidth:10,itemStyle:{color:(p)=>p.value>=0?"#f4504e":"#2ecc71",borderRadius:[0,4,4,0]}}]
-});
-
-// 4 放量倍数
-setChart("volratio", {
-  backgroundColor:"transparent",
-  tooltip:{trigger:"axis",axisPointer:{type:"shadow"},valueFormatter:v=>v.toFixed(2)+"x"},
-  grid:{left:110,right:40,top:8,bottom:24},
-  xAxis:{type:"value",axisLabel:{color:"#8a97b5"},splitLine:{lineStyle:{color:"rgba(36,48,74,.5)"}}},
-  yAxis:{type:"category",data:VOLRATIO.map(d=>d[0]),axisLabel:{color:"#8a97b5"}},
-  series:[{type:"bar",data:VOLRATIO.map(d=>d[1]),barWidth:10,itemStyle:{color:"#3d7eff",borderRadius:[0,4,4,0]}}]
-});
-
-// 5 折溢价
-setChart("premium", {
-  backgroundColor:"transparent",
-  tooltip:{trigger:"axis",axisPointer:{type:"shadow"},valueFormatter:v=>v.toFixed(2)+"%"},
-  grid:{left:110,right:40,top:8,bottom:24},
-  xAxis:{type:"value",axisLabel:{color:"#8a97b5"},splitLine:{lineStyle:{color:"rgba(36,48,74,.5)"}}},
-  yAxis:{type:"category",data:PREMIUM.map(d=>d[0]),axisLabel:{color:"#8a97b5"}},
-  series:[{type:"bar",data:PREMIUM.map(d=>d[1]),barWidth:10,itemStyle:{color:(p)=>p.value>=0?"#f4504e":"#2ecc71",borderRadius:[0,4,4,0]}}]
-});
-
-document.addEventListener("DOMContentLoaded", ()=>{
-  const tbody = document.getElementById("alert-body");
-  if(tbody) tbody.innerHTML = ALERTS.map(a=>`<tr class="alert"><td>${a.name}</td><td>${a.category}</td><td class="flag">${a.score}</td><td class="${cls(a.c1)}">${pct(a.c1)}</td><td class="${cls(a.c5)}">${pct(a.c5)}</td><td>${a.vr==null?"-":a.vr.toFixed(2)+"x"}</td><td class="${cls(a.n5)}">${fmt(a.n5/1e8)}</td></tr>`).join("");
-});
-document.addEventListener("DOMContentLoaded", ()=>{
-  const tb2 = document.getElementById("detail-body");
-  if(tb2) tb2.innerHTML = TABLE_ROWS.map(t=>`<tr><td>${t.code}</td><td>${t.name}${t.flag?"<span class='flag'> 异动</span>":""}</td><td>${t.category}</td><td><span class="pill ${t.code.startsWith("5")?"pill-sh":"pill-sz"}">${t.code.startsWith("5")?"沪":"深"}</span></td><td class="num">${t.share==null?"-":(t.share/1e8).toFixed(2)}</td><td class="${cls(t.chg1d_pct)}">${pct(t.chg1d_pct)}</td><td class="${cls(t.chg5d_pct)}">${pct(t.chg5d_pct)}</td><td class="${cls(t.chg20d_pct)}">${pct(t.chg20d_pct)}</td><td class="${cls(t.net5d)}">${t.net5d==null?"-":(t.net5d/1e8).toFixed(2)}</td><td>${t.vol_ratio==null?"-":t.vol_ratio.toFixed(2)+"x"}</td><td class="${cls(t.premium)}">${pct(t.premium)}</td><td>${t.nav==null?"-":t.nav.toFixed(3)}</td></tr>`).join("");
-});
-document.addEventListener("DOMContentLoaded", ()=>{
-  const hb = document.getElementById("holders-body");
-  if(!hb) return;
-  const periods = HOLDERS.periods || [];
-  if(!periods.length || periods.every(p=>!p.items || !p.items.length)){
-    hb.innerHTML = `<tr><td style="color:#8a97b5">尚未录入本季度披露数据，季报发布后可编辑 data/holders.json 更新。</td></tr>`;
-    return;
-  }
-  hb.innerHTML = periods.flatMap(p=>p.items.map(i=>`<tr><td>${p.period}</td><td>${i.code}</td><td>${i.name}</td><td>${i.holder}</td><td>${i.ratio}</td><td>${i.change||""}</td></tr>`)).join("");
-});
+// 5日净流入
+(function(){
+  const chart = echarts.init(document.getElementById('netflow'));
+  chart.setOption({
+    backgroundColor:'transparent',
+    tooltip:{trigger:'axis'},
+    grid:{left:90,right:40,top:10,bottom:30},
+    xAxis:{type:'value',axisLabel:{color:'#8a97b5'},splitLine:{lineStyle:{color:'rgba(36,48,74,.5)'}}},
+    yAxis:{type:'category',data:NETFLOW.names,axisLabel:{color:'#8a97b5'}},
+    series:[{type:'bar',data:NETFLOW.vals,itemStyle:{color:function(p){return p.value>=0?'#f4504e':'#2ecc71'}},label:{show:true,position:'right',color:'#dbe4f5',formatter:'{c}'}}]
+  });
+})();
 </script>
 </body>
 </html>"""
 
-    # ---------- 组装数据 ----------
-    trend_json = json.dumps([trend_dates] + [trend_series.get(c, []) for c in focus_codes], ensure_ascii=False)
-    trend_codes_json = json.dumps([[c, next((e["name"] for e in etfs if e["code"] == c), c)] for c in focus_codes], ensure_ascii=False)
+    # ---------- 数据填充 ----------
+    def fmt(v, digits=2, unit=""):
+        if v is None or (isinstance(v, float) and pd.isna(v)):
+            return "-"
+        return f"{v:.{digits}f}{unit}"
 
-    def pick(key, conv=lambda v: v, desc=False):
-        data = []
-        for r in rows:
-            v = r.get(key)
-            if v is None:
-                continue
-            data.append([r["name"], conv(v)])
-        data.sort(key=lambda x: x[1], reverse=desc)
-        return data[:10]
-
-    chg5d_json = json.dumps(pick("chg5d_pct", desc=True), ensure_ascii=False)
-    chg1d_json = json.dumps(pick("chg1d_pct", desc=True), ensure_ascii=False)
-    netflow_json = json.dumps(pick("net5d", lambda v: round(v / 1e8, 1), desc=True), ensure_ascii=False)
-    volratio_json = json.dumps(pick("vol_ratio", desc=True), ensure_ascii=False)
-    premium_json = json.dumps(pick("premium", desc=True), ensure_ascii=False)
-
-    alerts = [r for r in rows if r.get("flag")]
-    alerts_json = json.dumps([{"name": r["name"], "category": r["category"], "score": r["score"],
-                               "c1": r.get("chg1d_pct"), "c5": r.get("chg5d_pct"),
-                               "vr": r.get("vol_ratio"), "n5": r.get("net5d")} for r in alerts], ensure_ascii=False)
-
-    # 预警表行
-    alert_rows = "".join(
-        f"<tr class='alert'><td>{r['name']}</td><td>{r['category']}</td><td class='flag'>{r['score']}</td>"
-        f"<td class='{cls(r.get('chg1d_pct'))}'>{pct(r.get('chg1d_pct'))}</td>"
-        f"<td class='{cls(r.get('chg5d_pct'))}'>{pct(r.get('chg5d_pct'))}</td>"
-        f"<td>{'-' if r.get('vol_ratio') is None else str(round(r['vol_ratio'],2))+'x'}</td>"
-        f"<td class='{cls(r.get('net5d'))}'>{'-' if r.get('net5d') is None else round(r['net5d']/1e8,2)}</td></tr>"
-        for r in alerts)
-
-    # 明细表行
-    table_html = "".join(
-        f"<tr><td>{r['code']}</td><td>{r['name']}{'<span class=\"flag\"> 异动</span>' if r.get('flag') else ''}</td>"
-        f"<td>{r['category']}</td><td><span class='pill {'pill-sh' if r['code'].startswith('5') else 'pill-sz'}'>{'沪' if r['code'].startswith('5') else '深'}</span></td>"
-        f"<td class='num'>{'-' if r.get('share') is None else round(r['share']/1e8,2)}</td>"
-        f"<td class='{cls(r.get('chg1d_pct'))}'>{pct(r.get('chg1d_pct'))}</td>"
-        f"<td class='{cls(r.get('chg5d_pct'))}'>{pct(r.get('chg5d_pct'))}</td>"
-        f"<td class='{cls(r.get('chg20d_pct'))}'>{pct(r.get('chg20d_pct'))}</td>"
-        f"<td class='{cls(r.get('net5d'))}'>{'-' if r.get('net5d') is None else round(r['net5d']/1e8,2)}</td>"
-        f"<td>{'-' if r.get('vol_ratio') is None else str(round(r['vol_ratio'],2))+'x'}</td>"
-        f"<td class='{cls(r.get('premium'))}'>{pct(r.get('premium'))}</td>"
-        f"<td>{'-' if r.get('nav') is None else round(r['nav'],3)}</td></tr>"
-        for r in table_rows)
-
-    holders_note = holders.get("note", "")
-    holders_periods = holders.get("periods", [])
-    if any(p.get("items") for p in holders_periods):
-        holders_table = (
-            "<table><thead><tr><th>报告期</th><th>代码</th><th>名称</th><th>持有人</th><th>占比</th><th>变动</th></tr></thead>"
-            "<tbody>" + "".join(
-                f"<tr><td>{p['period']}</td><td>{i['code']}</td><td>{i['name']}</td><td>{i['holder']}</td><td>{i['ratio']}</td><td>{i.get('change','')}</td></tr>"
-                for p in holders_periods for i in p.get("items", [])) + "</tbody></table>")
-    else:
-        holders_table = "<div class='note'>尚未录入本季度披露数据，季报发布后可编辑 data/holders.json 更新。</div>"
-
-    # ---------- 汇总值 ----------
     inflow5d = snapshot.get("total_net_inflow_5d")
     inflow1d = snapshot.get("total_net_inflow_1d")
-    anom_count = sum(1 for r in rows if r.get("flag"))
+    inflow5d_yi = inflow5d / 1e8 if inflow5d is not None else None
+    inflow1d_yi = inflow1d / 1e8 if inflow1d is not None else None
 
-    def fmt_hy(v):
-        return "-" if v is None else f"{v/1e8:,.2f}"
+    # 异动表
+    alert_rows = ""
+    for r in table_rows:
+        if r["flag"]:
+            alert_rows += (f"<tr><td>{r['name']}</td><td>{r['category']}</td>"
+                           f"<td class='flag'>{fmt(r['score'],1)}</td>"
+                           f"<td class='num {('up' if (r['chg1d_pct'] or 0)>=0 else 'down')}'>{fmt(r['chg1d_pct'])}%</td>"
+                           f"<td class='num {('up' if (r['chg5d_pct'] or 0)>=0 else 'down')}'>{fmt(r['chg5d_pct'])}%</td>"
+                           f"<td class='num'>{fmt(r['vol_ratio'])}x</td>"
+                           f"<td class='num {('up' if (r['net5d'] or 0)>=0 else 'down')}'>{fmt(r['net5d']/1e8 if r['net5d'] else None)}</td></tr>")
+    if not alert_rows:
+        alert_rows = "<tr><td colspan='7' style='color:var(--sub)'>当前无显著异动（阈值：异动分≥40）</td></tr>"
 
-    html = (html
-        .replace("{ECHARTS_SCRIPT}", _echarts_script())
-        .replace("{DATE}", str(date))
-        .replace("{GEN}", str(generated))
-        .replace("{INFLOW5D}", fmt_hy(inflow5d))
-        .replace("{INFLOW1D}", fmt_hy(inflow1d))
-        .replace("{POOL_SIZE}", str(snapshot.get("pool_size", len(rows))))
-        .replace("{ANOM_COUNT}", str(anom_count))
-        .replace("{INFLOW_CLASS}", cls(inflow5d))
-        .replace("{INFLOW1D_CLASS}", cls(inflow1d))
-        .replace("{TREND_JSON}", trend_json)
-        .replace("{TREND_CODES_JSON}", trend_codes_json)
-        .replace("{CHG5D_JSON}", chg5d_json)
-        .replace("{CHG1D_JSON}", chg1d_json)
-        .replace("{NETFLOW_JSON}", netflow_json)
-        .replace("{VOLRATIO_JSON}", volratio_json)
-        .replace("{PREMIUM_JSON}", premium_json)
-        .replace("{ALERTS_JSON}", alerts_json)
-        .replace("{ALERT_ROWS}", alert_rows)
-        .replace("{TABLE_ROWS}", table_html)
-        .replace("{HOLDERS_NOTE}", holders_note)
-        .replace("{HOLDERS_TABLE}", holders_table)
-        .replace("{HOLDERS_JSON}", json.dumps(holders, ensure_ascii=False))
-        .replace("{TABLE_ROWS_JS}", json.dumps(table_rows, ensure_ascii=False)))
+    # 明细表
+    table_rows_html = ""
+    for r in table_rows:
+        mkt_pill = "<span class='pill pill-sh'>沪</span>" if r["code"].startswith(("5", "6")) else "<span class='pill pill-sz'>深</span>"
+        flag_html = "<span class='pill pill-anom'>异动</span>" if r["flag"] else ""
+        table_rows_html += (f"<tr><td>{r['code']}</td><td>{r['name']}{flag_html}</td><td>{r['category']}</td><td>{mkt_pill}</td>"
+                            f"<td class='num'>{fmt(r['share']/1e8 if r['share'] else None)}</td>"
+                            f"<td class='num {('up' if (r['chg1d_pct'] or 0)>=0 else 'down')}'>{fmt(r['chg1d_pct'])}%</td>"
+                            f"<td class='num {('up' if (r['chg5d_pct'] or 0)>=0 else 'down')}'>{fmt(r['chg5d_pct'])}%</td>"
+                            f"<td class='num {('up' if (r['chg20d_pct'] or 0)>=0 else 'down')}'>{fmt(r['chg20d_pct'])}%</td>"
+                            f"<td class='num {('up' if (r['net5d'] or 0)>=0 else 'down')}'>{fmt(r['net5d']/1e8 if r['net5d'] else None)}</td>"
+                            f"<td class='num'>{fmt(r['vol_ratio'])}x</td>"
+                            f"<td class='num {('up' if (r['premium'] or 0)>=0 else 'down')}'>{fmt(r['premium'])}%</td>"
+                            f"<td class='num'>{fmt(r['nav'])}</td></tr>")
+
+    # 持有人表
+    holders_note = holders.get("note", "")
+    holders_table = ""
+    for p in holders.get("periods", []):
+        items = p.get("items", [])
+        if items:
+            rows_html = "".join(
+                f"<tr><td>{it.get('code','')}</td><td>{it.get('name','')}</td>"
+                f"<td>{it.get('holder','')}</td><td>{it.get('ratio','')}</td><td>{it.get('change','')}</td></tr>"
+                for it in items)
+            holders_table += (f"<div style='margin-top:10px'><b>{p['period']}</b>"
+                              f"<table style='margin-top:6px'><thead><tr><th>代码</th><th>ETF</th><th>持有人</th><th>持仓占比</th><th>变化</th></tr></thead>"
+                              f"<tbody>{rows_html}</tbody></table></div>")
+    if not holders_table:
+        holders_table = "<div class='note' style='margin-top:8px'>尚未录入本季度披露数据，季报发布后可编辑 data/holders.json 更新。</div>"
+
+    # 图表 JSON
+    chg5d_names = [r["name"] for r in rows]
+    chg5d_vals = [round(r.get("share_chg_5d_pct") or 0, 2) for r in rows]
+    netflow_names = [r["name"] for r in rows]
+    netflow_vals = [round((r.get("net_inflow_5d") or 0) / 1e8, 2) for r in rows]
+
+    html = html.replace("{DATE}", date)
+    html = html.replace("{ECHARTS_SCRIPT}", _echarts_script())
+    html = html.replace("{GEN}", generated)
+    html = html.replace("{INFLOW5D}", fmt(inflow5d_yi))
+    html = html.replace("{INFLOW5D_CLASS}", ("up" if (inflow5d_yi or 0) >= 0 else "down"))
+    html = html.replace("{INFLOW1D}", fmt(inflow1d_yi))
+    html = html.replace("{INFLOW1D_CLASS}", ("up" if (inflow1d_yi or 0) >= 0 else "down"))
+    html = html.replace("{POOL_SIZE}", str(snapshot.get("pool_size", len(etfs))))
+    html = html.replace("{ANOM_COUNT}", str(sum(1 for r in table_rows if r["flag"])))
+    html = html.replace("{ALERT_ROWS}", alert_rows)
+    html = html.replace("{TABLE_ROWS}", table_rows_html)
+    html = html.replace("{HOLDERS_NOTE}", holders_note.replace("<", "&lt;").replace(">", "&gt;"))
+    html = html.replace("{HOLDERS_TABLE}", holders_table)
+    html = html.replace("{TREND_JSON}", json.dumps({**trend_series, "dates": trend_dates}, ensure_ascii=False))
+    html = html.replace("{TREND_CODES_JSON}", json.dumps(focus_codes))
+    html = html.replace("{CHG5D_JSON}", json.dumps({"names": chg5d_names, "vals": chg5d_vals}, ensure_ascii=False))
+    html = html.replace("{NETFLOW_JSON}", json.dumps({"names": netflow_names, "vals": netflow_vals}, ensure_ascii=False))
 
     with open(DASHBOARD, "w", encoding="utf-8") as f:
         f.write(html)
-    log(f"[dashboard] {DASHBOARD} written ({os.path.getsize(DASHBOARD)} bytes)")
-    return html
+    log(f"[dashboard] saved {DASHBOARD} ({os.path.getsize(DASHBOARD)} bytes)")
+    return DASHBOARD
 
 
 if __name__ == "__main__":
-    s = None
-    try:
-        with open(os.path.join(DATA_DIR, "daily_snapshot.json"), "r", encoding="utf-8") as f:
-            s = json.load(f)
-    except Exception:
-        pass
-    build_dashboard(s)
+    build_dashboard(None)
