@@ -1,0 +1,65 @@
+name: National Team ETF Tracker
+
+on:
+  schedule:
+    - cron: '40 7 * * 1-5'   # 北京时间 15:40（UTC 07:40），周一至周五收盘后
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install akshare==1.20.2 pandas==3.1.0 numpy==2.5.4 requests==2.34.2
+
+      - name: Download ECharts (inlined into dashboard)
+        run: |
+          mkdir -p libs
+          curl -fsSL -o libs/echarts.min.js https://unpkg.com/echarts@5.5.1/dist/echarts.min.js
+
+      - name: Run tracker
+        run: python main.py
+
+      - name: Commit outputs
+        run: |
+          git config user.name "national-team-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/ output/run_log.txt output/dashboard.html output/pages/
+          git diff --cached --quiet || git commit -m "daily update: $(date +%F)"
+          git push
+
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p deploy
+          cp -r output deploy/output
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: deploy
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
