@@ -530,3 +530,31 @@
 [metrics] snapshot 2026-11-05 saved, 16 etfs
 [dashboard] saved /home/runner/work/national-team-tracker/national-team-tracker/output/dashboard.html (1054062 bytes)
 ===== run done =====
+===== national-team-tracker run =====
+[seed] 份额历史已足够（410 个交易日），跳过回补
+[warn] SSE today fetch fail: Expecting value: line 1 column 1 (char 0)
+[warn] SZSE today fetch fail: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+  quote 510300: 3509 rows
+  quote 510310: 3308 rows
+  quote 510330: 3351 rows
+  quote 159919: 3507 rows
+  quote 510050: 5274 rows
+  quote 510180: 4973 rows
+  quote 563360: 501 rows
+  quote 159352: 501 rows
+  quote 563800: 477 rows
+  quote 510500: 3312 rows
+  quote 512500: 2733 rows
+  quote 512100: 2428 rows
+  quote 159845: 1357 rows
+  quote 560010: 1029 rows
+  quote 588000: 1448 rows
+  quote 159915: 3617 rows
+[quote] total 82650 rows, nav total 10430 rows
+[clean] share: 4924 -> 4924 rows (-0)
+[clean] quote: 82650 -> 41325 rows (-41325)
+[clean] nav: 10430 -> 10430 rows (-0)
+[clean] history normalized, removed 41325 duplicated rows
+[metrics] snapshot 2026-11-05 saved, 16 etfs
+[dashboard] saved /home/runner/work/national-team-tracker/national-team-tracker/output/dashboard.html (1054062 bytes)
+===== run done =====
