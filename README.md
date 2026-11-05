@@ -2,6 +2,10 @@
 
 自动跟踪中央汇金系（叠加国新、诚通等稳市资金）青睐的大盘宽基 ETF 的**每日份额变化**、**净流入估算**、**成交放量**与**折溢价**，以 GitHub Actions 每日收盘后自动运行，看板托管于 GitHub Pages。
 
+**在线看板**：<https://xhxie123-maker.github.io/national-team-tracker/>
+
+（同一页面也可通过 `/output/dashboard.html` 访问；看板为单文件自包含 HTML，ECharts 已内联，离线可打开。）
+
 ## 为什么跟踪“份额”而不是“持仓”
 
 国家队（主要是中央汇金系）的真实持仓只能通过基金季报/年报的**十大持有人**滞后确认（每季度）。但 ETF 的**每日份额**由交易所官方披露，是跟踪国家队动作方向的**最高频代理指标**：
@@ -42,15 +46,23 @@
 
 ```bash
 pip install -r requirements.txt
-python main.py             # 完整流程：回补历史(幂等，只补缺失交易日) + 当日 + 看板
+python main.py             # 完整流程：回补历史(幂等，只补缺失交易日) + 当日 + 清洗 + 看板
 python main.py --no-seed   # 跳过历史回补（不推荐，seed 幂等）
 ```
 
-看板输出：`output/dashboard.html`
+看板输出：`output/dashboard.html`（同时写入 `output/pages/metrics.json` 与 `data/daily_snapshot.json`）
 
 ## GitHub Actions
 
 `.github/workflows/daily.yml`：北京时间 15:40（周一至周五，收盘后）自动运行（可手动 workflow_dispatch 触发），拉取当日份额与行情 → 更新指标 → 生成看板 → 提交数据 → 部署 GitHub Pages。
+
+## 数据自愈设计（云端增量合并的坑）
+
+云端每次运行都会把全量历史行情重新合并，若 `date` 的 dtype 与 CSV 中不一致，`(date, code)` 去重会失效：
+行数翻倍 → 同一天多条记录 → 分析端 `.loc` 取回 `Series` 而非标量 → 指标计算崩溃。
+
+因此 `src/clean.py` 在分析前统一 `date` 为 `YYYY-MM-DD`、`code` 补零，并按 `(date, code)` 去重后回写；
+份额历史仅在**入库不足 60 个交易日**时回补（日常运行跳过，避免每次都跑十几分钟）。
 
 ## 季报十大持有人（手动维护）
 
