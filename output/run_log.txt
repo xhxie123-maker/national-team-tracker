@@ -262,3 +262,271 @@
 [metrics] snapshot 2026-11-05 saved, 16 etfs
 [dashboard] saved /home/runner/work/national-team-tracker/national-team-tracker/output/dashboard.html (1054062 bytes)
 ===== run done =====
+===== national-team-tracker run =====
+  seed 2025-02-28: +12 rows
+  seed 2025-03-03: +12 rows
+  seed 2025-03-04: +12 rows
+  seed 2025-03-05: +12 rows
+  seed 2025-03-06: +12 rows
+  seed 2025-03-07: +12 rows
+  seed 2025-03-10: +12 rows
+  seed 2025-03-11: +12 rows
+  seed 2025-03-12: +12 rows
+  seed 2025-03-13: +12 rows
+  seed 2025-03-14: +12 rows
+  seed 2025-03-17: +12 rows
+  seed 2025-03-18: +12 rows
+  seed 2025-03-19: +12 rows
+  seed 2025-03-20: +12 rows
+  seed 2025-03-21: +12 rows
+  seed 2025-03-24: +12 rows
+  seed 2025-03-25: +12 rows
+  seed 2025-03-26: +12 rows
+  seed 2025-03-27: +12 rows
+  seed 2025-03-28: +12 rows
+  seed 2025-03-31: +12 rows
+  seed 2025-04-01: +12 rows
+  seed 2025-04-02: +12 rows
+  seed 2025-04-03: +12 rows
+  seed 2025-04-07: +12 rows
+  seed 2025-04-08: +12 rows
+  seed 2025-04-09: +12 rows
+  seed 2025-04-10: +12 rows
+  seed 2025-04-11: +12 rows
+  seed 2025-04-14: +12 rows
+  seed 2025-04-15: +12 rows
+  seed 2025-04-16: +12 rows
+  seed 2025-04-17: +12 rows
+  seed 2025-04-18: +12 rows
+  seed 2025-04-21: +12 rows
+  seed 2025-04-22: +12 rows
+  seed 2025-04-23: +12 rows
+  seed 2025-04-24: +12 rows
+  seed 2025-04-25: +12 rows
+  seed 2025-04-28: +12 rows
+  seed 2025-04-29: +12 rows
+  seed 2025-04-30: +12 rows
+  seed 2025-05-06: +12 rows
+  seed 2025-05-07: +12 rows
+  seed 2025-05-08: +12 rows
+  seed 2025-05-09: +12 rows
+  seed 2025-05-12: +12 rows
+  seed 2025-05-13: +12 rows
+  seed 2025-05-14: +12 rows
+  seed 2025-05-15: +12 rows
+  seed 2025-05-16: +12 rows
+  seed 2025-05-19: +12 rows
+  seed 2025-05-20: +12 rows
+  seed 2025-05-21: +12 rows
+  seed 2025-05-22: +12 rows
+  seed 2025-05-23: +12 rows
+  seed 2025-05-26: +12 rows
+  seed 2025-05-27: +12 rows
+  seed 2025-05-28: +12 rows
+  seed 2025-05-29: +12 rows
+  seed 2025-05-30: +12 rows
+  seed 2025-06-03: +12 rows
+  seed 2025-06-04: +12 rows
+  seed 2025-06-05: +12 rows
+  seed 2025-06-06: +12 rows
+  seed 2025-06-09: +12 rows
+  seed 2025-06-10: +12 rows
+  seed 2025-06-11: +12 rows
+  seed 2025-06-12: +12 rows
+  seed 2025-06-13: +12 rows
+  seed 2025-06-16: +12 rows
+  seed 2025-06-17: +12 rows
+  seed 2025-06-18: +12 rows
+  seed 2025-06-19: +12 rows
+  seed 2025-06-20: +12 rows
+  seed 2025-06-23: +12 rows
+  seed 2025-06-24: +12 rows
+  seed 2025-06-25: +12 rows
+  seed 2025-06-26: +12 rows
+  seed 2025-06-27: +12 rows
+  seed 2025-06-30: +12 rows
+  seed 2025-07-01: +12 rows
+  seed 2025-07-02: +12 rows
+  seed 2025-07-03: +12 rows
+  seed 2025-07-04: +12 rows
+  seed 2025-07-07: +12 rows
+  seed 2025-07-08: +12 rows
+  seed 2025-07-09: +12 rows
+  seed 2025-07-10: +12 rows
+  seed 2025-07-11: +12 rows
+  seed 2025-07-14: +12 rows
+  seed 2025-07-15: +12 rows
+  seed 2025-07-16: +12 rows
+  seed 2025-07-17: +12 rows
+  seed 2025-07-18: +12 rows
+  seed 2025-07-21: +12 rows
+  seed 2025-07-22: +12 rows
+  seed 2025-07-23: +12 rows
+  seed 2025-07-24: +12 rows
+  seed 2025-07-25: +12 rows
+  seed 2025-07-28: +12 rows
+  seed 2025-07-29: +12 rows
+  seed 2025-07-30: +12 rows
+  seed 2025-07-31: +12 rows
+  seed 2025-08-01: +12 rows
+  seed 2025-08-04: +12 rows
+  seed 2025-08-05: +12 rows
+  seed 2025-08-06: +12 rows
+  seed 2025-08-07: +12 rows
+  seed 2025-08-08: +12 rows
+  seed 2025-08-11: +12 rows
+  seed 2025-08-12: +12 rows
+  seed 2025-08-13: +12 rows
+  seed 2025-08-14: +12 rows
+  seed 2025-08-15: +12 rows
+  seed 2025-08-18: +12 rows
+  seed 2025-08-19: +12 rows
+  seed 2025-08-20: +12 rows
+  seed 2025-08-21: +12 rows
+  seed 2025-08-22: +12 rows
+  seed 2025-08-25: +12 rows
+  seed 2025-08-26: +12 rows
+  seed 2025-08-27: +12 rows
+  seed 2025-08-28: +12 rows
+  seed 2025-08-29: +12 rows
+  seed 2025-09-01: +12 rows
+  seed 2025-09-02: +12 rows
+  seed 2025-09-03: +12 rows
+  seed 2025-09-04: +12 rows
+  seed 2025-09-05: +12 rows
+  seed 2025-09-08: +12 rows
+  seed 2025-09-09: +12 rows
+  seed 2025-09-10: +12 rows
+  seed 2025-09-11: +12 rows
+  seed 2025-09-12: +12 rows
+  seed 2025-09-15: +12 rows
+  seed 2025-09-16: +12 rows
+  seed 2025-09-17: +12 rows
+  seed 2025-09-18: +12 rows
+  seed 2025-09-19: +12 rows
+  seed 2025-09-22: +12 rows
+  seed 2025-09-23: +12 rows
+  seed 2025-09-24: +12 rows
+  seed 2025-09-25: +12 rows
+  seed 2025-09-26: +12 rows
+  seed 2025-09-29: +12 rows
+  seed 2025-09-30: +12 rows
+  seed 2025-10-09: +12 rows
+  seed 2025-10-10: +12 rows
+  seed 2025-10-13: +12 rows
+  seed 2025-10-14: +12 rows
+  seed 2025-10-15: +12 rows
+  seed 2025-10-16: +12 rows
+  seed 2025-10-17: +12 rows
+  seed 2025-10-20: +12 rows
+  seed 2025-10-21: +12 rows
+  seed 2025-10-22: +12 rows
+  seed 2025-10-23: +12 rows
+  seed 2025-10-24: +12 rows
+  seed 2025-10-27: +12 rows
+  seed 2025-10-28: +12 rows
+  seed 2025-10-29: +12 rows
+  seed 2025-10-30: +12 rows
+  seed 2025-10-31: +12 rows
+  seed 2025-11-03: +12 rows
+  seed 2025-11-04: +12 rows
+  seed 2025-11-05: +12 rows
+  seed 2025-11-06: +12 rows
+  seed 2025-11-07: +12 rows
+  seed 2025-11-10: +12 rows
+  seed 2025-11-11: +12 rows
+  seed 2025-11-12: +12 rows
+  seed 2025-11-13: +12 rows
+  seed 2025-11-14: +12 rows
+  seed 2025-11-17: +12 rows
+  seed 2025-11-18: +12 rows
+  seed 2025-11-19: +12 rows
+  seed 2025-11-20: +12 rows
+  seed 2025-11-21: +12 rows
+  seed 2025-11-24: +12 rows
+  seed 2025-11-25: +12 rows
+  seed 2025-11-26: +12 rows
+  seed 2025-11-27: +12 rows
+  seed 2025-11-28: +12 rows
+  seed 2025-12-01: +12 rows
+  seed 2025-12-02: +12 rows
+  seed 2025-12-03: +12 rows
+  seed 2025-12-04: +12 rows
+  seed 2025-12-05: +12 rows
+  seed 2025-12-08: +12 rows
+  seed 2025-12-09: +12 rows
+  seed 2025-12-10: +12 rows
+  seed 2025-12-11: +12 rows
+  seed 2025-12-12: +12 rows
+  seed 2025-12-15: +12 rows
+  seed 2025-12-16: +12 rows
+  seed 2025-12-17: +12 rows
+  seed 2025-12-18: +12 rows
+  seed 2025-12-19: +12 rows
+  seed 2026-11-06 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-09 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-10 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-11 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-12 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-13 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-16 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-17 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-18 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-19 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-20 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-23 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-24 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-25 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-26 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-27 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-11-30 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-01 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-02 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-03 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-04 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-07 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-08 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-09 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-10 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-11 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-14 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-15 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-16 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-17 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-18 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-21 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-22 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-23 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-24 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-25 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-28 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-29 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-30 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+  seed 2026-12-31 FAIL: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+[seed] share history updated, +2400 rows, total 4924
+[warn] SSE today fetch fail: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+[warn] SZSE today fetch fail: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+  quote 510300: 3509 rows
+  quote 510310: 3308 rows
+  quote 510330: 3351 rows
+  quote 159919: 3507 rows
+  quote 510050: 5274 rows
+  quote 510180: 4973 rows
+  quote 563360: 501 rows
+  quote 159352: 501 rows
+  quote 563800: 477 rows
+  quote 510500: 3312 rows
+  quote 512500: 2733 rows
+  quote 512100: 2428 rows
+  quote 159845: 1357 rows
+  quote 560010: 1029 rows
+  quote 588000: 1448 rows
+  quote 159915: 3617 rows
+[quote] total 82650 rows, nav total 10430 rows
+[clean] share: 4924 -> 4924 rows (-0)
+[clean] quote: 82650 -> 41325 rows (-41325)
+[clean] nav: 10430 -> 10430 rows (-0)
+[clean] history normalized, removed 41325 duplicated rows
+[metrics] snapshot 2026-11-05 saved, 16 etfs
+[dashboard] saved /home/runner/work/national-team-tracker/national-team-tracker/output/dashboard.html (1054062 bytes)
+===== run done =====
