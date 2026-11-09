@@ -586,3 +586,31 @@
 [metrics] snapshot 2026-11-05 saved, 16 etfs
 [dashboard] saved /home/runner/work/national-team-tracker/national-team-tracker/output/dashboard.html (1054062 bytes)
 ===== run done =====
+===== national-team-tracker run =====
+[seed] 份额历史已足够（410 个交易日），跳过回补
+[warn] SSE today fetch fail: "None of [Index(['序号', '基金代码', '基金简称', 'ETF类型', '统计日期', '基金份额'], dtype='str')] are in the [columns]"
+[warn] SZSE today fetch fail: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+  quote 510300: 3510 rows
+  quote 510310: 3309 rows
+  quote 510330: 3352 rows
+  quote 159919: 3508 rows
+  quote 510050: 5275 rows
+  quote 510180: 4974 rows
+  quote 563360: 502 rows
+  quote 159352: 502 rows
+  quote 563800: 478 rows
+  quote 510500: 3313 rows
+  quote 512500: 2734 rows
+  quote 512100: 2429 rows
+  quote 159845: 1358 rows
+  quote 560010: 1030 rows
+  quote 588000: 1449 rows
+  quote 159915: 3618 rows
+[quote] total 82666 rows, nav total 10446 rows
+[clean] share: 4924 -> 4924 rows (-0)
+[clean] quote: 82666 -> 41341 rows (-41325)
+[clean] nav: 10446 -> 10446 rows (-0)
+[clean] history normalized, removed 41325 duplicated rows
+[metrics] snapshot 2026-11-05 saved, 16 etfs
+[dashboard] saved /home/runner/work/national-team-tracker/national-team-tracker/output/dashboard.html (1054062 bytes)
+===== run done =====
