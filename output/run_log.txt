@@ -894,3 +894,31 @@
 [metrics] snapshot 2026-11-05 saved, 16 etfs
 [dashboard] saved /home/runner/work/national-team-tracker/national-team-tracker/output/dashboard.html (1054302 bytes)
 ===== run done =====
+===== national-team-tracker run =====
+[seed] 份额历史已足够（410 个交易日），跳过回补
+[warn] SSE today fetch fail: HTTPSConnectionPool(host='query.sse.com.cn', port=443): Max retries exceeded with url: /commonQuery.do?isPagination=true&pageHelp.pageSize=10000&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&sqlId=COMMON_SSE_ZQPZ_ETFZL_XXPL_ETFGM_SEARCH_L&STAT_DATE=2026-12-31 (Caused by NewConnectionError("HTTPSConnection(host='query.sse.com.cn', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable"))
+[warn] SZSE today fetch fail: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+  quote 510300: 3521 rows
+  quote 510310: 3320 rows
+  quote 510330: 3363 rows
+  quote 159919: 3519 rows
+  quote 510050: 5286 rows
+  quote 510180: 4985 rows
+  quote 563360: 513 rows
+  quote 159352: 513 rows
+  quote 563800: 489 rows
+  quote 510500: 3324 rows
+  quote 512500: 2745 rows
+  quote 512100: 2440 rows
+  quote 159845: 1369 rows
+  quote 560010: 1041 rows
+  quote 588000: 1460 rows
+  quote 159915: 3629 rows
+[quote] total 83018 rows, nav total 10622 rows
+[clean] share: 4924 -> 4924 rows (-0)
+[clean] quote: 83018 -> 41517 rows (-41501)
+[clean] nav: 10622 -> 10622 rows (-0)
+[clean] history normalized, removed 41501 duplicated rows
+[metrics] snapshot 2026-11-05 saved, 16 etfs
+[dashboard] saved /home/runner/work/national-team-tracker/national-team-tracker/output/dashboard.html (1054302 bytes)
+===== run done =====
